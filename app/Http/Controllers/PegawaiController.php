@@ -8,16 +8,12 @@ use App\Models\Pegawai;
 
 class PegawaiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         return view('pegawai');
     }
     
-    /**
-     * Show the form for creating a new resource.
-     */
+    
 
 }

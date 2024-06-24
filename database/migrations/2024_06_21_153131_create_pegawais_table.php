@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('alamat')->nullable();
             $table->string('jabatan')->nullable();
             $table->string('status')->nullable();
+            
             $table->timestamps();
         });
     }

@@ -1,132 +1,94 @@
 <?php
-
+  
 namespace App\Http\Controllers;
-
-use App\Models\Post;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+  
 use App\Models\Pegawai;
-
-
-
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
+  
 class PostController extends Controller
-{    
-    /**
-     * index
-     *
-     * @return void
-     */
-    public function index()
+{
 
+    public function index(): View
     {
-        //get posts
         $posts = Pegawai::orderBy('id')->paginate(50);
-
-        //render view with posts
-        return view('pegawai', compact('posts'));
-
-    } 
-
-  /**
-     * create
-     *
-     * @return void
+        
+        return view('pegawai',compact('posts'));
+                  
+    }
+  
+    /**
+     * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('posts.create');
     }
-
+  
     /**
-     * store
-     *
-     * @param Request $request
-     * @return void
+     * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //validate form
-        $this->validate($request, [
-            'nama'=> 'required|min:5', 
-            'tanggal'=> 'required|min:5',
-            'alamat'=> 'required|min:5',
-            'jabatan'=> 'required|min:5',
-            'status'=> 'required|min:5'
+        $request->validate([
+            'nama'=> 'required', 
+            'tanggal'=> 'required',
+            'alamat'=> 'required', 
+            'jabatan'=> 'required',
+            'status'=> 'required',
         ]);
-
-        //upload image
-        //$image = $request->file('image');
-        //$image->storeAs('public/posts', $image->hashName());
-
-        //create post
-        Pegawai::create([
-            'nama'=> $request->nama, 
-            'tanggal'=> $request->tanggal,
-            'alamat'=> $request->alamat, 
-            'jabatan'=> $request->jabatan,
-            'status'=> $request->status
-
-        ]);
-        return view('posts.create')->with(['success' => 'Data Berhasil Disimpan!']);
-
-    }
-        /**
-     * edit
-     *
-    * @param  mixed $post
-    * @return void
-    */
-   public function edit(Pegawai $post)
-   {
-       return view('posts.edit', compact('post'));
-   }
-   
-   /**
-    * update
-    *
-    * @param  mixed $request
-    * @param  mixed $post
-    * @return void
-    */
-   public function update(Request $request, Pegawai $post)
-   {
-       //validate form
-       $this->validate($request, [
-        'nama'=> 'required|min:5', 
-        'tanggal'=> 'required|min:5',
-        'alamat'=> 'required|min:5',
-        'jabatan'=> 'required|min:5',
-        'status'=> 'required|min:5'
-       ]);
-
-      
-           $post->update([
-            'nama'=> $request->nama, 
-            'tanggal'=> $request->tanggal,
-            'alamat'=> $request->alamat, 
-            'jabatan'=> $request->jabatan,
-            'status'=> $request->status
-           ]);
-
         
-
-       //redirect to index
-       //return view('posts.edit')->with(['success' => 'Data Berhasil Disimpan!']);
-   }
-
-   /**
-     * destroy
-     *
-     * @param  mixed $posts
-     * @return void
+        Pegawai::create($request->all());
+         
+        return redirect()->route('pegawai.index')
+                        ->with('success','Pegawai created successfully.');
+    }
+  
+    /**
+     * Display the specified resource.
      */
-    public function destroy(Pegawai $kill)
+    public function show(Pegawai $Pegawai): View
     {
-
-        //delete post
-        $kill->delete();
-
-        //redirect to index
-        return view('pegawai')->with(['success' => 'Data Berhasil Dihapus!']);
+        return view('posts.show',compact('Pegawai'));
+    }
+  
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Pegawai $Pegawai): View
+    {
+        return view('posts.edit',compact('Pegawai'));
+    }
+  
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Pegawai $Pegawai): RedirectResponse
+    {
+        $request->validate([
+            'nama'=> 'required', 
+            'tanggal'=> 'required',
+            'alamat'=> 'required', 
+            'jabatan'=> 'required',
+            'status'=> 'required',
+        ]);
+        
+        $Pegawai->update($request->all());
+        
+        return redirect()->route('pegawai.index')
+                        ->with('success','Pegawai updated successfully');
+    }
+  
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Pegawai $Pegawai): RedirectResponse
+    {
+        $Pegawai->delete();
+         
+        return redirect()->route('pegawai.index')
+                        ->with('success','Pegawai deleted successfully');
     }
 }
