@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-@include('head')
+@include('bar.head')
 
 <body>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
-      <div class="navbar-bg"></div>
+      <div class="navbar-bg"></div><!-- dibawah ini topbar -->
       <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
           <ul class="navbar-nav mr-3">
@@ -43,24 +43,17 @@
             <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profile
-              </a>
-              <a href="features-activities.html" class="dropdown-item has-icon">
-                <i class="fas fa-bolt"></i> Activities
-              </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Settings
-              </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </a>
+              <form action="{{ url( '/auth/logout' )}}" method="POST">
+                @csrf
+                <button type="submit" class="dropdown-item has-icon text-danger">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+              </form>
             </div>
           </li>
         </ul>
-      </nav>
+      </nav><!-- dibawah ini sidebar -->
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
@@ -74,16 +67,16 @@
             <li class="dropdown active">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboardku</span></a>
               <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="index-0.html">General Dashboard</a></li>
+                <li class=active><a class="nav-link" href="{{url('/dashboard')}}">General Dashboard</a></li>
               </ul>
-            <li><a class="nav-link" href="blank.html"><i class="far fa-user"></i> <span>Data Pegawai</span></a></li>
-            <li><a class="nav-link" href="blank.html"><i class="fas fa-pencil-ruler"></i> <span>apa gitu</span></a></li>
-            <li><a class="nav-link" href="blank.html"><i class="fas fa-file-alt"></i> <span>apa gitu2</span></a></li>
+            <li class=active><a class="nav-link" href="{{url('/pegawai')}}"><i class="far fa-user"></i> <span>Data Pegawai</span></a></li>
+            <li class=active><a class="nav-link" href="blank.html"><i class="fas fa-pencil-ruler"></i> <span>apa gitu</span></a></li>
+            <li class=active><a class="nav-link" href="blank.html"><i class="fas fa-file-alt"></i> <span>apa gitu2</span></a></li>
             </li>
             <li class="menu-header">Starter</li>
 
             <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
-            <li class="menu-header">Stisla</li>
+            <li class="menu-header">Kantor</li>
 
           <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
           </ul>
@@ -95,7 +88,7 @@
           </div>        </aside>
       </div>
 
-      <!-- Main Content -->
+      <!-- halaman utama -->
       <div class="main-content">
         <section class="section">
           <div class="section-header">
@@ -109,10 +102,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Admin</h4>
+                    <h4>Total Pegawai</h4>
                   </div>
                   <div class="card-body">
-                    10
+                  
                   </div>
                 </div>
               </div>
@@ -227,6 +220,6 @@
     </div>
   </div>
 
-@include('script')
+@include('script.script')
 </body>
 </html>
