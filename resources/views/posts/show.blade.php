@@ -13,7 +13,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>DETAIL PEGAWAI</h1>
+            <h1>DETAIL KARYAWAN</h1>
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">

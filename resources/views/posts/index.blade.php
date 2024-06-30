@@ -6,8 +6,8 @@
 
     <div class="main-content">
         <section class="section">
-          <div class="section-header">
-            <h1>DATA PEGAWAI</h1>
+          <div class="display-1"class="text-center">
+            <h1 class="text-center">DATA KARYAWAN</h1>
           </div>
           <div class="container mt-5">
             <div class="row">

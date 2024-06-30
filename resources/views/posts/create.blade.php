@@ -13,7 +13,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Menambah Pegawai</h1>
+            <h1>Menambah karyawan</h1>
           </div>
           <div class="card">
             <form action="{{ route('pegawai.store') }}" method="POST">

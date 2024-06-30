@@ -70,13 +70,7 @@
                 <li class=active><a class="nav-link" href="{{url('/dashboard')}}">General Dashboard</a></li>
               </ul>
             <li class=active><a class="nav-link" href="{{url('/pegawai')}}"><i class="far fa-user"></i> <span>Data Pegawai</span></a></li>
-            <li class=active><a class="nav-link" href="blank.html"><i class="fas fa-pencil-ruler"></i> <span>AKUN</span></a></li>
-            </li>
-          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-              <i class="fas fa-rocket"></i> Documentation
-            </a>
-          </div>        </aside>
+                </aside>
       </div>
       <!-- halaman utama -->
       <div class="main-content">
