@@ -7,7 +7,7 @@
     <div class="main-content">
         <section class="section">
           <div class="display-1"class="text-center">
-            <h1 class="text-center">DATA KARYAWAN</h1>
+            <h2 class="p-3 mb-2 bg-primary text-white">DATA KARYAWAN</h2>
           </div>
           <div class="container mt-5">
             <div class="row">

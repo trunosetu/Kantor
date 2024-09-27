@@ -2,7 +2,7 @@
 <html lang="en">
 @include('bar.head')
 
-<body>
+<body >
   <div id="app">
     <section class="section">
       <div class="container mt-5">
